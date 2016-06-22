@@ -1,0 +1,63 @@
+{
+    "products": [{
+            "pineapple_Grenade": {
+                "id": 0,
+                "type": 2,
+                "name": "Pineapple Grenade",
+                "description": "A standard fragmentation grenade."
+            },
+            "bouncing_betty": {
+                "id": 0,
+                "type": 2,
+                "name": "Bouncing Betty",
+                "description": "A mine that jumps out of the ground and explodes."
+            },
+            "C4": {
+                "id": 0,
+                "type": 2,
+                "name": "C4",
+                "description": "Composition Four, a classic."
+            }
+        },
+    {
+        "javelin_missile": {
+            "id": 1,
+            "type": 2,
+            "name": "Javelin Missile",
+            "description": "Smart missile for the smart buyer. Hits tanks where it hurts... on top."
+        },
+        "RPG-8": {
+            "id": 1,
+            "type": 2,
+            "name": "RPG-8",
+            "description": "A classic with a molten copped shape charge. Perfect for non-ceramic armor."
+        },
+        "tank_mine": {
+            "id": 1,
+            "type": 2,
+            "name": "Anti-Tank Mine",
+            "description": "A big 'ole land mine that only a 10-ton-behemoth will set off."
+        }
+    },
+    {
+        "goblins": {
+            "id": 2,
+            "type": 2,
+            "name": "Goblins",
+            "description": "Bred in caves with a maniacal lust for all things boom. They tunnel too!"
+        },
+        "planks": {
+            "id": 2,
+            "type": 2,
+            "name": "Planks",
+            "description": "Special wood to support your sapping tunnels with."
+        },
+        "black_powder": {
+            "id": 2,
+            "type": 2,
+            "name": "Black Powder",
+            "description": "It may be old school to all you hip C4-using sapper engineers, but if you have enough it'll get the job done."
+        }
+    }
+  ]
+}
