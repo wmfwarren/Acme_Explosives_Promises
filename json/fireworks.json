@@ -1,0 +1,22 @@
+{
+    "types": [
+        {
+            "id": 0,
+            "category": 0,
+            "name": "personal",
+            "description": "Fireworks intended for recreational use during holiday celebrations"
+        },
+        {
+            "id": 0,
+            "category": 0,
+            "name": "commercial",
+            "description": "Fireworks intended for recreational use during holiday celebrations"
+        },  
+        {
+            "id": 0,
+            "category": 0,
+            "name": "celebration",
+            "description": "Fireworks intended for recreational use during holiday celebrations"
+        },
+    ]
+}
