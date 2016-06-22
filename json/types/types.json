@@ -1,7 +1,7 @@
 {
     "types": [
-        [{
-`
+        [
+        {
             "id": 0,
             "category": 0,
             "name": "personal",
@@ -38,7 +38,7 @@
             "category": 1,
             "name": "skyscrapers",
             "description": "For bringing down the sky itself!"
-        },
+        }
     ], 
     [ 
         {
@@ -58,7 +58,7 @@
             "category": 1,
             "name": "skyscrapers",
             "description": "For bringing down the sky itself!"
-        },
+        }
     ]
     ]
 }
