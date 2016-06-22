@@ -1,0 +1,22 @@
+{
+    "types": [
+        {
+            "id": 0,
+            "category": 1,
+            "name": "small building",
+            "description": "For houses and other small buildings."
+        },
+        {
+            "id": 1,
+            "category": 1,
+            "name": "large building",
+            "description": "For buildings up to sevens stories."
+        },  
+        {
+            "id": 2,
+            "category": 1,
+            "name": "skyscrapers",
+            "description": "For bringing down the sky itself!"
+        },
+    ]
+}

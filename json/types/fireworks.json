@@ -7,16 +7,16 @@
             "description": "Fireworks intended for recreational use during holiday celebrations"
         },
         {
-            "id": 0,
+            "id": 1,
             "category": 0,
-            "name": "commercial",
-            "description": "Fireworks intended for recreational use during holiday celebrations"
+            "name": "resale",
+            "description": "Fireworks from wholesalers meant for sale to third-parties"
         },  
         {
-            "id": 0,
+            "id": 2,
             "category": 0,
             "name": "celebration",
-            "description": "Fireworks intended for recreational use during holiday celebrations"
+            "description": "Big fireworks for the Fourth and other major events"
         },
     ]
 }
