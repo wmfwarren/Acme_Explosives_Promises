@@ -6,22 +6,39 @@ $(document).ready(function(){
 		var typeName = null;
 		var categoryID = null;
 		var typeID = null;
+		var descriptionText = null;
+		var productsArray = null; 
+		var productName = null;
 		// event listener
-		$(document).on("change", "#category", function(event){
+		$(document).on("change", "#dropdowns", function(event){
 			getCategory(event)
 			.then(function(category){
 				return applyTypes(category);
 			}).then(function(types){
+				$(document).on("change", "#type", function(event){
+					var typeName = $("#type").val();
+					printTypeDescription(typeName, types);
+				});
 	      return changeTypeSelectors(types);
+			}).then(function(products){
+				$(document).on("change", "#product", function(event){
+					productName = $("#product").val();
+
+				});
+				return loadProducts(products);
 			});
 		});
 
-		$(document).on("change", "#type", function(event){
-			loadProducts(event)
-			.then(function(types){
-				return resolveType(types);
-			});
-		});	
+	//helper for printing description of the type
+		function printTypeDescription (nameToCheck, types) {
+			for(let i = 0; i < types.length; i++){
+				for(let keys in types){
+					if (types[keys] === nameToCheck){
+						$("#typeOutput").append(`<p class="typeDescription">${types[i][name]}</p>`);
+					}
+				}
+			}
+		}
 	//helper function for get category
 		function resolveCategory(data){
 			for (let i = 0; i < data.categories.length; i++){
@@ -34,23 +51,12 @@ $(document).ready(function(){
 			categoryName = categoryName;
 			categoryID = categoryID;
 		}
-	//helper
-		function resolveType(data) {
-			for (let i = 0; i < data.types.length; i++){
-				var targetType = data.types[i];
-				if ($("#type").val() === targetType.name){
-					typeName = targetType.name;
-					typeID = targetType.id;
-				}
-			}
-			typeName = typeName;
-			typeID = typeID;
-		}
+
 	//helper for the resolveCategory helper
 		function changeTypeSelectors( JSONObject){
+
 			var $typesZone = $("#type");
 			var categoryType = JSONObject.types[categoryID];
-			
 			$typesZone.children().remove(); //remove old children
 
 			$typesZone.append(`<option id="none">-</option>`);
@@ -58,30 +64,33 @@ $(document).ready(function(){
 			for (let i = 0; i < categoryType.length; i++){
 				$typesZone.append(`<option id="${categoryType[i].name}">${categoryType[i].name}</option>`);
 			}
-			
+			for (let i = 0; i < JSONObject.types.length; i++){
+				let targetType = JSONObject.types[i];
+				for (let j = 0; j < targetType.length; j++){
+					if ($("#type").val() === targetType[j].name){
+						typeName = targetType[j].name;
+						typeID = targetType[j].id;
+					}
+				}
+			}
 		}
-	//helper
-		// function setTypeID(typeToMatch){
-		// 	for (let i = 0; i < typeToMatch.length; i++){
-		// 		if ($("#type").val() === categoryToMatch.name){
-		// 			typeID = categoryToMatch[i].id;
-		// 		}
-		// 	}
-		// }
+
 	//helper for adding to the product dropdown
 		function changeProductSelectors(JSONTypeObject){
 			var $productZone = $("#product");
 			var typeProduct = JSONTypeObject.products[typeID];
-
+			productsArray = typeProduct;
 			$productZone.children().remove(); //remove old children
 
 			$productZone.append(`<option id="none">-</option>`);
 			for (let keys in typeProduct){
-					$productZone.append(`<option id="${typeProduct[keys]}">${typeProduct[keys]}</option>`);
+				$productZone.append(`<option id="${typeProduct[keys]["name"]}">${typeProduct[keys]["name"]}</option>`);
 			}
 
-
 		}
+	//helper function to print to Dom
+
+		///////////promises\\\\\\\\\\\
 	//gets the category
 		var getCategory = function(event){
 			return new Promise((resovle, reject) => {
@@ -100,7 +109,7 @@ $(document).ready(function(){
 	  return new Promise((resolve, reject) => {
 	    $.ajax({
 	      url: "../json/types/types.json",
-	      // data: category
+	      data: category
 	    }).done(function(data) {
 	      resolve(data);
 	    }).fail(function(xhr, status, error) {
@@ -109,7 +118,7 @@ $(document).ready(function(){
 		  }
 		)};
 
-	  var loadProducts = function (){
+	  var loadProducts = function (types){
 			return new Promise((resolve, reject) => {
 		    $.ajax({
 		      url: `../json/types/${categoryName}Products.json`,
@@ -117,7 +126,6 @@ $(document).ready(function(){
 		    }).done(function(data) {
 		    	changeProductSelectors(data);
 		      resolve(data);
-		      console.log(data);
 		    }).fail(function(xhr, status, error) {
 		      reject(error);
 		    });
