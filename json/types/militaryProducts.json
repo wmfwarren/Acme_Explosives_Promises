@@ -1,5 +1,6 @@
 {
-    "products": [{
+    "products": {
+        "anti-personnel":{
             "pineapple_Grenade": {
                 "id": 0,
                 "type": 2,
@@ -19,7 +20,7 @@
                 "description": "Composition Four, a classic."
             }
         },
-    {
+    "anti-armor":{
         "javelin_missile": {
             "id": 0,
             "type": 2,
@@ -39,7 +40,7 @@
             "description": "A big 'ole land mine that only a 10-ton-behemoth will set off."
         }
     },
-    {
+    "sapping":{
         "goblins": {
             "id": 0,
             "type": 2,
@@ -59,5 +60,5 @@
             "description": "It may be old school to all you hip C4-using sapper engineers, but if you have enough it'll get the job done."
         }
     }
-  ]
+  }
 }

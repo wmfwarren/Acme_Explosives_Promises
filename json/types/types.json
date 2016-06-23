@@ -1,59 +1,59 @@
 {
     "types": {
-        {
-        {
+       "fireworks": {
+       "personal": {
             "id": 0,
             "category": 0,
             "name": "personal",
             "description": "Fireworks intended for recreational use during holiday celebrations"
         },
-        {
+        "resale": {
             "id": 1,
             "category": 0,
             "name": "resale",
             "description": "Fireworks from wholesalers meant for sale to third-parties"
         },  
-        {
+        "celebration": {
             "id": 2,
             "category": 0,
             "name": "celebration",
             "description": "Big fireworks for the Fourth and other major events"
         }
     },
-    {
-        {
+    "demolition": {
+       "small_building": {
             "id": 0,
             "category": 1,
             "name": "small building",
             "description": "For houses and other small buildings."
         },
-        {
+        "large_building": {
             "id": 1,
             "category": 1,
             "name": "large building",
             "description": "For buildings up to sevens stories."
         },  
-        {
+        "skyscrapers": {
             "id": 2,
             "category": 1,
             "name": "skyscrapers",
             "description": "For bringing down the sky itself!"
         }
     }, 
-    { 
-        {
+    "military": { 
+       "anti-personnel": {
             "id": 0,
             "category": 2,
             "name": "anti-personnel",
             "description": "For dealing with troops."
         },
-        {
+        "anti-armor": {
             "id": 1,
             "category": 2,
             "name": "anti-armor",
             "description": "For destroying tanks and the like."
         },  
-        {
+        "sapping": {
             "id": 2,
             "category": 2,
             "name": "sapping",

@@ -10,83 +10,81 @@ $(document).ready(function(){
 		var productsArray = null; 
 		var productName = null;
 		// event listener
+		$(document).on("change", "#category", function(event){
+			categoryName = $("#category").val();
+		});
+
 		$(document).on("change", "#dropdowns", function(event){
 			getCategory(event)
 			.then(function(category){
 				return applyTypes(category);
 			}).then(function(types){
-				$(document).on("change", "#type", function(event){
-					var typeName = $("#type").val();
-					printTypeDescription(typeName, types);
-				});
-	      return changeTypeSelectors(types);
+				typeName = $("#type").val();
+				printTypeDescription(categoryName, typeName, types);
+	      return changeTypeSelectors(types, categoryName);
 			}).then(function(products){
 				$(document).on("change", "#product", function(event){
 					productName = $("#product").val();
-
+					printProductDescription(categoryName, productName, productsArray);
 				});
 				return loadProducts(products);
 			});
 		});
 
 	//helper for printing description of the type
-		function printTypeDescription (nameToCheck, types) {
-			for(let i = 0; i < types.length; i++){
-				for(let keys in types){
-					if (types[keys] === nameToCheck){
-						$("#typeOutput").append(`<p class="typeDescription">${types[i][name]}</p>`);
-					}
+		function printTypeDescription(category, typeToCheck, types) {
+			for (let keys in types["types"][category][typeToCheck]){
+				$("#typeOutput").children().remove();
+				$("#typeOutput").append("<h3>Type Description</h3>");
+				if (keys === "description"){
+					let typeToPrint = types["types"][category][typeToCheck]["description"];
+					$("#typeOutput").append(`<p>${typeToPrint}</p>`);
 				}
 			}
 		}
-	//helper function for get category
-		function resolveCategory(data){
-			for (let i = 0; i < data.categories.length; i++){
-				var targetCategory = data.categories[i];
-				if ($("#category").val() === targetCategory.name){
-					categoryName = targetCategory.name;
-					categoryID = targetCategory.id;
+	//Printing product descriptions
+		function printProductDescription(category, productToCheck, productsArray) {
+			for (let keys in productsArray){
+				$("#productOutput").children().remove();
+				$("#productOutput").append("<h3>Product Description</h3>");
+				if(keys === productToCheck){
+					$("#productOutput").append(`<p>${productsArray[productToCheck]["description"]}</p>`);
 				}
 			}
-			categoryName = categoryName;
-			categoryID = categoryID;
 		}
-
 	//helper for the resolveCategory helper
-		function changeTypeSelectors( JSONObject){
+		function changeTypeSelectors( JSONObject, categoryName) {
 
 			var $typesZone = $("#type");
-			var categoryType = JSONObject.types[categoryID];
-			$typesZone.children().remove(); //remove old children
-
+			var categoryType = JSONObject["types"][categoryName];
+			//event listener for changing of the type
+			$(document).on("change", "#type", function(event){
+				var categoryType = JSONObject["types"][categoryName];
+				var selectedType = $("#type").val();
+				typeID = categoryType["category"];
+			});
+			
+			if ($typesZone.children().length > 0){
+				$typesZone.children().remove(); //remove old children
+			}
 			$typesZone.append(`<option id="none">-</option>`);
 
-			for (let i = 0; i < categoryType.length; i++){
-				$typesZone.append(`<option id="${categoryType[i].name}">${categoryType[i].name}</option>`);
-			}
-			for (let i = 0; i < JSONObject.types.length; i++){
-				let targetType = JSONObject.types[i];
-				for (let j = 0; j < targetType.length; j++){
-					if ($("#type").val() === targetType[j].name){
-						typeName = targetType[j].name;
-						typeID = targetType[j].id;
-					}
-				}
+			for (let keys in categoryType){
+				$typesZone.append(`<option id="${keys}">${keys}</option>`);
 			}
 		}
 
 	//helper for adding to the product dropdown
-		function changeProductSelectors(JSONTypeObject){
+		function changeProductSelectors(JSONTypeObject, type){
 			var $productZone = $("#product");
-			var typeProduct = JSONTypeObject.products[typeID];
+			var typeProduct = JSONTypeObject["products"][`${type}`];
 			productsArray = typeProduct;
 			$productZone.children().remove(); //remove old children
-
 			$productZone.append(`<option id="none">-</option>`);
-			for (let keys in typeProduct){
-				$productZone.append(`<option id="${typeProduct[keys]["name"]}">${typeProduct[keys]["name"]}</option>`);
-			}
-
+				for (let keys in typeProduct){
+					let optionToAdd = keys;
+					$productZone.append(`<option id="${optionToAdd}">${optionToAdd}</option>`);
+				}
 		}
 	//helper function to print to Dom
 
@@ -97,7 +95,7 @@ $(document).ready(function(){
 				$.ajax({
 	      	url: "../json/categories.json"
 	    	}).done(function(data) {
-	      	 resolveCategory(data);
+					
 	      	resovle(data );
 	    	}).fail(function(xhr, status, error) {
 	      	reject(error);
@@ -124,7 +122,7 @@ $(document).ready(function(){
 		      url: `../json/types/${categoryName}Products.json`,
 		      // data: category
 		    }).done(function(data) {
-		    	changeProductSelectors(data);
+		    	changeProductSelectors(data, typeName);
 		      resolve(data);
 		    }).fail(function(xhr, status, error) {
 		      reject(error);

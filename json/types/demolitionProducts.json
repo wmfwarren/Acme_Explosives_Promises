@@ -1,5 +1,6 @@
 {
-    "products": [{
+    "products": {
+        "small_buildings": {
             "dyno-might": {
                 "id": 0,
                 "type": 0,
@@ -19,7 +20,7 @@
                 "description": "Takes out exactly one room in any small building."
             }
         },
-    {
+    "large_buidlins": {
         "xv104": {
             "id": 0,
             "type": 0,
@@ -39,7 +40,7 @@
             "description": "Reusable! Guaranteed to survive demolition."
         }
     },
-    {
+    "skyscrapers": {
         "the_motherload": {
             "id": 0,
             "type": 0,
@@ -59,5 +60,5 @@
             "description": "Its just TNT, but do really really need anything else?"
         }
     }
-  ]
+  }
 }
