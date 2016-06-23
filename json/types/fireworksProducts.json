@@ -1,5 +1,6 @@
 {
-    "products": [{
+    "products": {
+        "firewors":{
             "snakes": {
                 "id": 0,
                 "type": 1,
@@ -7,21 +8,21 @@
                 "description": "The most boring fireworks."
             },
             "sparklers": {
-                "id": 0,
+                "id": 1,
                 "type": 1,
                 "name": "Sparklers",
                 "description": "They sparkle if you couldn't tell."
             },
             "bottle_rockets": {
-                "id": 0,
+                "id": 2,
                 "type": 1,
                 "name": "Bottle Rockets",
                 "description": "Put 'em in a bottle, watch 'em fly."
             }
         },
-    {
+    "resale":{
         "random": {
-            "id": 1,
+            "id": 0,
             "type": 1,
             "name": "Random",
             "description": "1000 randomly assorted fireworks. Some may be damaged!"
@@ -33,21 +34,21 @@
             "description": "All red all the time. Only red fireworks, not green, not blue, just red."
         },
         "truck_o_boom": {
-            "id": 1,
+            "id": 2,
             "type": 1,
             "name": "Truck 'o Boom",
             "description": "A dump truck full of explosives, delivered to your door!"
         }
     },
-    {
+    "celebration": {
         "red": {
-            "id": 2,
+            "id": 0,
             "type": 1,
             "name": "Red",
             "description": "They're red."
         },
         "blue": {
-            "id": 2,
+            "id": 1,
             "type": 1,
             "name": "Blue",
             "description": "They're blue."
@@ -59,5 +60,5 @@
             "description": "These explode black, best used in day light"
         }
     }
-  ]
+  }
 }

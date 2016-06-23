@@ -1,5 +1,6 @@
 {
-    "products": [{
+    "products": {
+        "small_buildings": {
             "dyno-might": {
                 "id": 0,
                 "type": 0,
@@ -7,21 +8,21 @@
                 "description": "A mighty big bag in a might small stick!"
             },
             "lil'bang_btix": {
-                "id": 0,
+                "id": 1,
                 "type": 0,
                 "name": "lil'bang Stix",
                 "description": "For blowing up sheds; only sheds."
             },
             "booma": {
-                "id": 0,
+                "id": 2,
                 "type": 0,
                 "name": "Booma",
                 "description": "Takes out exactly one room in any small building."
             }
         },
-    {
+    "large_buidlins": {
         "xv104": {
-            "id": 1,
+            "id": 0,
             "type": 0,
             "name": "XV104",
             "description": "Special shape charges for destroying support pylons."
@@ -33,21 +34,21 @@
             "description": "Wire. You'll need a lot."
         },
         "safety_tape": {
-            "id": 1,
+            "id": 2,
             "type": 0,
             "name": "Safety Tape",
             "description": "Reusable! Guaranteed to survive demolition."
         }
     },
-    {
+    "skyscrapers": {
         "the_motherload": {
-            "id": 2,
+            "id": 0,
             "type": 0,
             "name": "The Motherload",
             "description": "An 18-wheeler full of C4. It will take out almost anything."
         },
         "thermite": {
-            "id": 2,
+            "id": 1,
             "type": 0,
             "name": "Thermite",
             "description": "A special incendiary that can burn through steel I-beams."
@@ -59,5 +60,5 @@
             "description": "Its just TNT, but do really really need anything else?"
         }
     }
-  ]
+  }
 }
